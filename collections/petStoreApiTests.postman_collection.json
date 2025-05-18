@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "668a4272-5932-4aa6-94d8-56f8b3ef9c98",
+		"name": "petStoreApiTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35362150",
+		"_collection_link": "https://www.postman.com/technical-cosmonaut-96453729/workspace/petstoreapitests/collection/35362150-668a4272-5932-4aa6-94d8-56f8b3ef9c98?action=share&source=collection_link&creator=35362150"
+	},
+	"item": [
+		{
+			"name": "pet",
+			"item": [
+				{
+					"name": "post",
+					"item": [
+						{
+							"name": "createPetWithNameKeyCyrillicValue",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let schema = { \"type\": \"object\",",
+											"  \"properties\": {",
+											"    \"id\": {",
+											"      \"type\": \"integer\"",
+											"    },",
+											"    \"category\": {",
+											"      \"type\": \"object\",",
+											"      \"properties\": {",
+											"        \"id\": {",
+											"          \"type\": \"integer\"",
+											"        },",
+											"        \"name\": {",
+											"          \"type\": \"string\"",
+											"        }",
+											"      }",
+											"    },",
+											"    \"name\": {",
+											"      \"type\": \"string\"",
+											"    },",
+											"    \"photoUrls\": {",
+											"      \"type\": \"array\",",
+											"      \"items\": {",
+											"        \"type\": \"string\"",
+											"      }",
+											"    },",
+											"    \"tags\": {",
+											"      \"type\": \"array\",",
+											"      \"items\": {",
+											"        \"type\": \"object\",",
+											"        \"properties\": {",
+											"          \"id\": {",
+											"            \"type\": \"integer\"",
+											"          },",
+											"          \"name\": {",
+											"            \"type\": \"string\"",
+											"          }",
+											"        }",
+											"      }",
+											"    },",
+											"    \"status\": {",
+											"      \"type\": \"string\"",
+											"    }",
+											"  },",
+											"  \"required\": [",
+											"    \"name\",",
+											"    \"photoUrls\"",
+											"  ]",
+											"};",
+											"//Проверяю схему с 200-ым статус кодом ",
+											"pm.test('Проверка JSON схемы ответа', function(){",
+											"  pm.response.to.have.jsonSchema(schema);",
+											"});",
+											"",
+											"pm.test('Время ответа от сервера не превышает 1000ms' , function() {",
+											"  pm.expect(pm.response.responseTime).to.be.below(1000);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": {{$randomInt}},\n  \"category\": {\n    \"id\": {{$randomInt}},\n    \"name\": \"{{$randomProductName}}\"\n  },\n  \"name\": \"Джонии\",\n  \"photoUrls\": [\n    \"{{$randomAnimalsImage}}\"\n  ],\n  \"tags\": [\n    {\n      \"id\": {{$randomInt}},\n      \"name\": \"{{$randomLoremWord}}\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createPetWithNameKeyLatinAndNumericValue",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Время ответа от сервера не превышает 1000ms\" , function() {",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": {{$randomInt}},\n  \"category\": {\n    \"id\": {{$randomInt}},\n    \"name\": \"{{$randomProductName}}\"\n  },\n  \"name\": \"Keep901\",\n  \"photoUrls\": [\n    \"{{$randomAnimalsImage}}\"\n  ],\n  \"tags\": [\n    {\n      \"id\": {{$randomInt}},\n      \"name\": \"{{$randomLoremWord}}\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createPetWithNameKeyNumericValue",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Время ответа от сервера не превышает 1000ms\" , function() {",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": {{$randomInt}},\n  \"category\": {\n    \"id\": {{$randomInt}},\n    \"name\": \"{{$randomProductName}}\"\n  },\n  \"name\": \"{{$randomInt}}\",\n  \"photoUrls\": [\n    \"{{$randomAnimalsImage}}\"\n  ],\n  \"tags\": [\n    {\n      \"id\": {{$randomInt}},\n      \"name\": \"{{$randomLoremWord}}\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createPetWithNameKeyEmptyValue",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Время ответа от сервера не превышает 1000ms\" , function() {",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": {{$randomInt}},\n  \"category\": {\n    \"id\": {{$randomInt}},\n    \"name\": \"{{$randomProductName}}\"\n  },\n  \"name\": \"\",\n  \"photoUrls\": [\n    \"{{$randomAnimalsImage}}\"\n  ],\n  \"tags\": [\n    {\n      \"id\": {{$randomInt}},\n      \"name\": \"{{$randomLoremWord}}\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createPetWithoutNameKey",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Время ответа от сервера не превышает 1000ms\" , function() {",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": {{$randomInt}},\n  \"category\": {\n    \"id\": {{$randomInt}},\n    \"name\": \"{{$randomProductName}}\"\n  },\n  \"name\": ,\n  \"photoUrls\": [\n    \"{{$randomAnimalsImage}}\"\n  ],\n  \"tags\": [\n    {\n      \"id\": {{$randomInt}},\n      \"name\": \"{{$randomLoremWord}}\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}",
+									"host": [
+										"{{url}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
